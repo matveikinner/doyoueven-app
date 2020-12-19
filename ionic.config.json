@@ -1,0 +1,7 @@
+{
+  "name": "doyoueven",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
