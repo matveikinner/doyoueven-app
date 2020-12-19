@@ -1,9 +1,9 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import React, { FunctionComponent } from 'react';
+import Environment from '../environments/environment.types';
 import './Home.css';
 
-const Home: React.FC = () => {
+const Home: FunctionComponent = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -12,12 +12,11 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+            <IonTitle size='small'>Environment: {process.env[Environment.REACT_APP_ENV_NAME] || 'LOCAL'}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
       </IonContent>
     </IonPage>
   );

@@ -1,0 +1,10 @@
+.lintstagedrc.yml
+.huskyrc.yml
+.commitlintrc.yml
+.prettierrc.yml
+.eslintrc.yml
+
+build/\*
+public/\*
+src/react-app-env.d.ts
+src/serviceWorker.ts
