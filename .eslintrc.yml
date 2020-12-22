@@ -105,3 +105,4 @@ rules:
   "react/jsx-props-no-spreading": "off"
   "no-underscore-dangle": "off"
   "@typescript-eslint/no-use-before-define": "off"
+  "@typescript-eslint/lines-between-class-members": "off"
