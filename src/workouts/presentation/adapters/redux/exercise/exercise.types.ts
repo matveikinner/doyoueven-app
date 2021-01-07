@@ -1,3 +1,4 @@
+import ExerciseModel from '../../../../domain/entities/models/exercise.model';
 import {
   CREATE_EXERCISE_FAILURE,
   CREATE_EXERCISE_REQUEST,
@@ -15,9 +16,10 @@ export interface Exercise {
   restInBetween: string;
 }
 
-interface CreateExerciseRequest {
+export interface CreateExerciseRequest {
   type: typeof CREATE_EXERCISE_REQUEST;
-  payload: Exercise;
+  // Changed from local Exercise to domains ExerciseModel
+  payload: ExerciseModel;
 }
 
 interface CreateExerciseSuccess {
@@ -41,7 +43,7 @@ interface RemoveExerciseFailure {
 }
 
 export interface ExerciseState {
-  exercises: Exercise[];
+  exercises: ExerciseModel[];
 }
 
 export type ExerciseActionTypes =

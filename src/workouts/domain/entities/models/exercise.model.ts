@@ -1,7 +1,11 @@
 export default class ExerciseModel {
-  private restInBetween: string;
+  movement!: string;
+  reps!: number;
+  sets!: number;
 
-  constructor(restInBetween: string) {
-    this.restInBetween = restInBetween;
-  }
+  // constructor(movement: string, reps: number, sets: number) {
+  //   this.movement = movement;
+  //   this.reps = reps;
+  //   this.sets = sets;
+  // }
 }

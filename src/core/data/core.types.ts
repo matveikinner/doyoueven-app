@@ -1,5 +1,5 @@
 const TYPES = {
-  IHttpService: Symbol.for('IHttpService'),
+  HttpService: Symbol.for('HttpService'),
 };
 
 export default TYPES;

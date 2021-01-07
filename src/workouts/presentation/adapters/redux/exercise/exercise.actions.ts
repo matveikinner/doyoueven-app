@@ -1,3 +1,4 @@
+import ExerciseModel from '../../../../domain/entities/models/exercise.model';
 import {
   CREATE_EXERCISE_FAILURE,
   CREATE_EXERCISE_REQUEST,
@@ -8,7 +9,7 @@ import {
 } from './exercise.constants';
 import { Exercise, ExerciseActionTypes } from './exercise.types';
 
-export const createExerciseRequest = (payload: Exercise): ExerciseActionTypes => ({
+export const createExerciseRequest = (payload: ExerciseModel): ExerciseActionTypes => ({
   type: CREATE_EXERCISE_REQUEST,
   payload,
 });

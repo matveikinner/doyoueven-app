@@ -1,10 +1,10 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import TYPES from '../../data/exercise.types';
+import exerciseContainer from '../../data/inversify.config';
+import IExerciseInteractor from '../../domain/interfaces/exercise.interactor.interface';
 import { rootReducer } from '../adapters/redux';
 import rootSaga from '../adapters/redux-saga/exercise';
-// import TYPES from '../services/service.types';
-// import { IUserService } from '../services/user/user.interface';
-// import appContainer from './inversify.config';
 
 // const middlewares = [];
 // const enhancers = [];
@@ -20,16 +20,17 @@ declare global {
 }
 
 // Inversify Context injection to redux Saga
-// const userService = appContainer.get<IUserService>(TYPES.IUserService);
+// Rule violation here, as exporting TYPES from data layer
+const exerciseInteractor = exerciseContainer.get<IExerciseInteractor>(TYPES.ExerciseInteractor);
 
 const sagaMiddleware = createSagaMiddleware({
   /**
    * Pass context to later use DI in Redux Sagas, see
    * https://stackoverflow.com/a/55558745/12660598
    */
-  // context: {
-  //   userService,
-  // },
+  context: {
+    exerciseInteractor,
+  },
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

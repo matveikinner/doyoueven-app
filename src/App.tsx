@@ -1,8 +1,11 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { FunctionComponent } from 'react';
+import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { v4 as uuid } from 'uuid';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core';
+import routes from './App.routes';
+import themeOptions from './theme/custom.theme';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,15 +26,27 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path='/home' component={Home} exact />
-        <Route exact path='/' render={() => <Redirect to='/home' />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: FunctionComponent = () => {
+  let theme = createMuiTheme({
+    ...themeOptions,
+    // For example to later replace theme type ('dark' | 'light) to one from global state management
+    palette: { ...themeOptions.palette, type: 'light' },
+  });
+  theme = responsiveFontSizes(theme);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <IonApp>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            {routes.map((route) => (
+              <Route key={uuid()} {...route} />
+            ))}
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonApp>
+    </ThemeProvider>
+  );
+};
 
 export default App;

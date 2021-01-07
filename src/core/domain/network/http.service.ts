@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { injectable } from 'inversify';
 import Environment from '../../../environments/environment.types';
-import { IHttpService } from '../interfaces/http.interface';
+import IHttpService from '../interfaces/http.interface';
 
 @injectable()
 class HttpService implements IHttpService {

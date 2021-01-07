@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
 
-export interface IHttpService {
+export default interface IHttpService {
   getClient(): AxiosInstance;
 }
