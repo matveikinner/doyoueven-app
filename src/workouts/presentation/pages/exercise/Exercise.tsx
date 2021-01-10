@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import useStyles, { Row } from './Exercise.style';
 import { createExerciseRequest } from '../../adapters/redux/exercise/exercise.actions';
 import ExerciseModel from '../../../domain/entities/models/exercise.model';
+import Loader from '../../../../core/presentation/components/loader/Loader';
 
 const Exercise: FunctionComponent = () => {
   const classes = useStyles();
@@ -54,6 +55,7 @@ const Exercise: FunctionComponent = () => {
             <Button onClick={() => dispatch(createExerciseRequest(state))}>Create</Button>
           </Row>
         </Grid>
+        <Loader />
       </IonContent>
     </IonPage>
   );

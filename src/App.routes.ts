@@ -1,17 +1,22 @@
 import { RouteProps } from 'react-router-dom';
-import Home from './pages/Home';
+import Register from './auth/presentation/pages/register/Register';
 import Exercise from './workouts/presentation/pages/exercise/Exercise';
 
-const routes: RouteProps[] = [
+interface MyRouteProps extends RouteProps {
+  secure?: boolean;
+}
+
+const routes: MyRouteProps[] = [
   {
-    path: '/',
+    path: '/register',
     exact: true,
-    component: Home,
+    component: Register,
   },
   {
     path: '/exercises',
     exact: true,
     component: Exercise,
+    secure: true,
   },
 ];
 

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './workouts/presentation/frameworks/redux.config';
+import store from './core/presentation/frameworks/redux.config';
 
 ReactDOM.render(
   <Provider store={store}>

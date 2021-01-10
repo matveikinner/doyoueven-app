@@ -1,6 +1,6 @@
 import { Container } from 'inversify';
 import IHttpService from '../domain/interfaces/http.interface';
-import HttpService from '../domain/network/http.service';
+import HttpService from './network/http.service';
 import TYPES from './core.types';
 
 const coreContainer = new Container();

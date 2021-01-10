@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 import TYPES from '../../../core/data/core.types';
-import HttpService from '../../../core/domain/network/http.service';
+import HttpService from '../../../core/data/network/http.service';
 import ExerciseModel from '../../domain/entities/models/exercise.model';
 import IExerciseRepository from '../../domain/interfaces/exercise.repository.interface';
 

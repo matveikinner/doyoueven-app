@@ -4,8 +4,11 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { v4 as uuid } from 'uuid';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import routes from './App.routes';
 import themeOptions from './theme/custom.theme';
+// import AuthGuardRoute from './core/presentation/utils/guards/auth.guard';
+import { selectIsLoggedIn } from './auth/presentation/adapters/redux/user/user.selectors';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,6 +28,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import withGuard from './core/presentation/utils/hocs/withGuard';
 
 const App: FunctionComponent = () => {
   let theme = createMuiTheme({
@@ -34,14 +38,20 @@ const App: FunctionComponent = () => {
   });
   theme = responsiveFontSizes(theme);
 
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const AuthGuardRoute = withGuard(isLoggedIn, '/register')(Route);
+  const DefaultGuardRoute = withGuard(!isLoggedIn, '/exercises')(Route);
+
   return (
     <ThemeProvider theme={theme}>
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            {routes.map((route) => (
-              <Route key={uuid()} {...route} />
-            ))}
+            {routes.map((route) => {
+              const { secure, ...rest } = route;
+              if (secure) return <AuthGuardRoute key={uuid()} {...rest} />;
+              return <DefaultGuardRoute key={uuid()} {...rest} />;
+            })}
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>
